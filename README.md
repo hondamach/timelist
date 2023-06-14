@@ -15,17 +15,24 @@ OUTPUT
 Xuất ra tất cả thời gian trong danh sách đã được tối giản theo qui ước trên.
 
 EXAMPLE
+
 Input    
 
-0	     
+0	
+
 Output  
+
+Input
+
 1
 
 2 20 60	
 
-	Output  
+Output  
  
- 2h21p0s
+  2h21p0s
+ 
+Input
 
 4
 
