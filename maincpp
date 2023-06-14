@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+struct TIME{
+    int gio,phut,giay;
+};
+
+struct node {
+	TIME info;
+	node* next;
+};
+
+struct List{
+	node* head;
+	node* tail;
+};
+
+node* creatNode (int x,int y, int z)
+{
+    node *p =new node;
+    p->info.gio =x;
+    p->info.phut =y;
+    p->info.giay =z;
+    p->next =NULL;
+    return p;
+}
+void AddNode(List &L, node* p)
+{
+    if (L.head ==NULL)
+    {
+        L.head =p;
+        L.tail = L.head;
+    }
+    else
+    {
+    p->next = L.head;
+    L.head =p;
+    }
+}
+node* chuyendoi(node* p)
+{
+        p->info.phut += p->info.giay /60;
+        p->info.giay = p->info.giay%60;
+        p->info.gio += p->info.phut /60;
+        p->info.phut = p->info.phut%60;
+        p->info.gio = p->info.gio %24;
+        //cout<< p->info.gio << "h" << p->info.phut << "p" << p->info.giay << "s\n";
+        return p;
+}
+void CreateList(List &L)
+{
+    L.head =NULL;
+    L.tail =NULL;
+    int n;
+    cin >> n;
+    int x,y,z;
+    node* p;
+    for (int i =0 ;i < n; i++)
+    {
+        cin >>x >> y >>z;
+        p= creatNode(x , y, z);
+        p= chuyendoi(p);
+        AddNode(L,p);
+    }
+
+}
+void PrintList(List &L)
+{
+    for (auto p =L.head; p != NULL; p = p->next)
+    {
+        cout<< p->info.gio << "h" << p->info.phut << "p" << p->info.giay << "s\n";
+    }
+}
+int main() {
+    List L;
+    CreateList(L);
+    PrintList(L);
+    return 0;
+}
